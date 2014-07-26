@@ -15,26 +15,35 @@
     String num = request.getParameter("num");
     String ip = request.getRemoteAddr();	
 
-    out.println(mode);	
+   
 %>
 
 <%@ include file="JDBC_header.jsp"%>
 
 <%
-			if ("W".equals(mode)) {
+
+ out.println(mode);	
+		if ("W".equals(mode)) {
 			out.println(mode);
 			pstmt = conn.prepareStatement(
 				"INSERT INTO boo_board (SUBJECT, WRITER ,CONTENTS, IP, HIT, REG_DATE, MOD_DATE) "+
 				"VALUES (?, ?, ?, ?, 0, NOW(), NOW())");
-			out.println(ip);
 			pstmt.setString(1, subject);
 			pstmt.setString(2, "zoflr9305");
 			pstmt.setString(3, contents);
 			pstmt.setString(4, ip);
 			pstmt.executeUpdate();
-	
+
 			response.sendRedirect("index_contents_board.jsp");
 		} 
+		if ("R".equals(mode)) {
+
+			pstmt = conn.prepareStatement(
+					"DELETE FROM BOO_BOARD WHERE NUM= ? ");
+			pstmt.setString(1, num);
+			pstmt.executeUpdate();
+			response.sendRedirect("index_contents_board.jsp");
+		}
 %>
 
 

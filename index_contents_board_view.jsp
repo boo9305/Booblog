@@ -6,9 +6,22 @@
 <%@ include file="index_header.jsp"%>
 <%@ include file="JDBC_header.jsp"%>
 
+	<script>
+		// function boardWriteCheck(){
+		// 	var form = document.board_write_form;
+		// 	if(form.subject.value == ''){
+		// 		alert('input the title');
+		// 		form.subject.focus();
+		// 		return false;
+		// 	}
+	
+		// 	return true;
+		// }
+	</script>
 	<%
 	
 	    String num = request.getParameter("num");
+	    String mode ="R";
 	    String SQL_Search_Contents  = "select * from boo_board where 'num' = num";
 		pstmt = conn.prepareStatement(
 			"SELECT NUM, SUBJECT, CONTENTS, WRITER, HIT, REG_DATE FROM boo_board "+ 
@@ -20,6 +33,8 @@
 		
 	%>
 
+
+
 	<div class ="border_title">
 		<h2><%=rs.getString("subject")%></h2>
 	</div>
@@ -28,7 +43,7 @@
 		<p><%=rs.getString("contents")%></p>
 	</div>
 
-	<div class="clearfix line_border">
+	<div class="clearfix line_border ">
 		<div class="pull-left">
 			<a href="index_contents_board.jsp">
 				<button class="btn btn-primary" type="button">List</button>
@@ -40,10 +55,13 @@
 				<button class="btn btn-primary" type="button">modification</button>
 			</a>
 
-			<a href="index_contents_board_process.jsp">
-				<button class="btn btn-primary" type="button">Remove</button>
-			</a>
 
+			
+			
+			<a href="index_contents_board_process.jsp?mode=R&amp;num=<%=num%>">
+				<button class="btn btn-primary" type="sudmit">Remove</button>
+			</a>
+		
 		</div>
 	</div>
 

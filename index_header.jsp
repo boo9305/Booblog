@@ -10,13 +10,12 @@
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-		
-		
+
 		<script src="jquery/jquery-1.11.1.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<style>
 			body{
-
+				
 				padding : 30px;
 			}
 		
@@ -45,7 +44,7 @@
 
 		<div id='my_title'>
 			<div class="row hero-unit "> 
-				<h1>Title <small>Blog</small></h1>
+				<h2>Story <small>Blog</small></h2>
 			</div>
 		</div>
 
@@ -56,7 +55,7 @@
 				<div class="span3">
 					<nav>
 						
-					        <ul class="nav nav-tabs nav-stacked my_ul">
+					        <ul class="nav nav-pills nav-stacked my_ul">
 				                <li id = "mhome"><a href ="index_contents_main.jsp">Home</a></li>
 				                <li id = "mboard"><a href ="index_contents_board.jsp">page</a></li>
 				                <li id = "mpicture"><a href ="index_contents_picture.jsp">picture</a></li>
@@ -71,4 +70,4 @@
 
 				</div>
 				<div class="span9">
-						<article>
+						<article style ="width :96%">	

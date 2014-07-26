@@ -4,8 +4,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 	<%
+		response.setContentType("text/html; charset=euckr");
+		request.setCharacterEncoding("euckr");
 	    String driverName="com.mysql.jdbc.Driver";
-	    String url = "jdbc:mysql://localhost:3306/my_web";
+	    String url = "jdbc:mysql://localhost:3306/my_web?useUnicode=true&characterEncoding=euckr";
 	    String id = "root";
 	    String pwd ="9305";
 	   	Connection conn =null;

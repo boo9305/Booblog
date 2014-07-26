@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	 <script src="edit/ckeditor/ckeditor.js"></script>
+	 <script src="edit/ckeditor_standerd/ckeditor.js"></script>
 
 	<%@ include file="index_header.jsp"%>
 	<%@ include file="JDBC_header.jsp"%>
@@ -29,33 +29,40 @@
 	<%@ include file="JDBC_footer.jsp"%>		
 
 
-		<form name ="board_write_form" action ="index_contents_board_process.jsp" method="post" onsubmit="return boardWriteCheck();">
-		<input type="hidden" name="mode" value="W" />
-			<div clss="clearfix">
-				 <textarea name="subject" style="width:98%;height:20px;resize:none"></textarea>
-			</div>
-			<!-- <div class = "editor"> -->
-	       <textarea name="contents" style="width:100%;height:200px;"></textarea>
-			<script type="text/javascript">
-				 CKEDITOR.replace( 'contents' );
-	        </script>
 
-			<!-- </div> -->
 
-			<div class="clearfix line_border" >		
-					<div class="pull-right">
-						<a href="index_contents_board.jsp">
-							<button class="btn btn-primary" type="submit">Confirmation</button>
-						</a>
+	<form name ="board_write_form" action ="index_contents_board_process.jsp" method="post" onsubmit="return boardWriteCheck();" >
+	<input type="hidden" name="mode" value="W" />
+	
 
-					</div>			
-					<div class="pull-left">
-						<a href="index_contents_board.jsp">
-							<button class="btn btn-primary" type="button">List</button>
-						</a>
-					</div>				
-			</div>
+		<label for="Titleinput"><b>Title</b></label>
+		 <input id="Titleinput" name="subject" style="margin-bottom:10px;width:99.5%;resize:none" maxlength="100" placeholder="Enter title"></input>
+	
 
-		</form>
+		<!-- <div class = "editor"> -->
+		<label for="Contentsinput"><b>Contents</b></label>
+       <textarea id ="Contentsinput" name="contents" style="width:100%;height:200px;"></textarea>
+		<script type="text/javascript">
+			 CKEDITOR.replace( 'contents' ,{skin:'moono'});
+        </script>
+
+		<!-- </div> -->
+
+		<div class="clearfix line_border" >		
+				<div class="pull-right">
+					<a href="index_contents_board.jsp">
+						<button class="btn btn-primary" type="submit">Confirmation</button>
+					</a>
+
+				</div>			
+				<div class="pull-left">
+					<a href="index_contents_board.jsp">
+						<button class="btn btn-primary" type="button">List</button>
+					</a>
+				</div>				
+		</div>
+
+	</form>
+
 	<%@ include file="index_footer.jsp"%>
 	
