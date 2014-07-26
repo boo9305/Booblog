@@ -1,7 +1,4 @@
-<%@page import="java.sql.*"%> <%-- JDBC API 임포트 작업 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 	 <script src="edit/ckeditor_standerd/ckeditor.js"></script>
 
 	<%@ include file="index_header.jsp"%>
@@ -50,9 +47,8 @@
 
 		<div class="clearfix line_border" >		
 				<div class="pull-right">
-					<a href="index_contents_board.jsp">
 						<button class="btn btn-primary" type="submit">Confirmation</button>
-					</a>
+				
 
 				</div>			
 				<div class="pull-left">

@@ -32,6 +32,12 @@
 				margin-top:50px;
 				border-top:1px solid gray
 			}
+
+			.board_title{
+				border-bottom:2px solid lightgreen;
+				padding-bottom:20px;
+				margin-bottom:50px;
+			}
 		</style>
 	</head>
 
@@ -44,7 +50,7 @@
 
 		<div id='my_title'>
 			<div class="row hero-unit "> 
-				<h2>Story <small>Blog</small></h2>
+				<h2>공사중 <small>Blog</small></h2>
 			</div>
 		</div>
 

@@ -1,7 +1,3 @@
-<%@page import="java.sql.*"%> <%-- JDBC API 임포트 작업 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ include file="index_header.jsp"%>
 		<script type="text/javascript">
@@ -35,15 +31,29 @@
 			pstmt.executeUpdate();
 
 			response.sendRedirect("index_contents_board.jsp");
-		} 
-		if ("R".equals(mode)) {
+		} else if ("R".equals(mode)) {
 
 			pstmt = conn.prepareStatement(
 					"DELETE FROM BOO_BOARD WHERE NUM= ? ");
 			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 			response.sendRedirect("index_contents_board.jsp");
+		}else if ("M".equals(mode)){
+			
+			pstmt = conn.prepareStatement(
+					"UPDATE BOO_BOARD SET SUBJECT= ?, CONTENTS= ?, IP= ? , MOD_DATE = NOW() "+"WHERE NUM = ? ");
+			pstmt.setString(1, subject);
+			pstmt.setString(2, contents);
+			pstmt.setString(3, ip);
+			pstmt.setString(4, num);
+
+			pstmt.executeUpdate();
+			response.sendRedirect("index_contents_board_view.jsp?num="+num);
+		}else{
+			out.println("error");
 		}
+
+
 %>
 
 
