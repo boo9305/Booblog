@@ -1,0 +1,12 @@
+CREATE TABLE boo_board (
+      NUM int(11) NOT NULL AUTO_INCREMENT,
+      SUBJECT varchar(250) NOT NULL,
+      WRITER varchar(50) NOT NULL ,
+      CONTENTS text,
+      HIT int(11) DEFAULT NULL ,
+      IP varchar(30) NOT NULL ,
+      REG_DATE datetime NOT NULL ,
+      MOD_DATE datetime DEFAULT NULL ,
+      PRIMARY KEY (NUM),
+      UNIQUE KEY NUM (NUM)
+   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;

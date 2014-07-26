@@ -4,55 +4,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-		<%@ include file="index_header.jsp"%>
+	<%@ include file="index_header.jsp"%>
+	<%@ include file="JDBC_header.jsp"%>
+		<%
+		   	String SQL_column_count  = "select count(*) Num from boo_board";
+		    String SQL_search  = "select * from boo_board ORDER BY NUM DESC";
+		  //  int column_count;
+		  	
+		    pstmt = conn.prepareStatement(SQL_column_count);   
+		   	rs = pstmt.executeQuery();
+		   	rs.next();
 
-	
+			md_column_count	=	rs.getInt("Num");
+		//	while(rs.next())
+		 //		out.println(rs.getString(1) + "<br>");
+			//rs.beforeFirst();
+		  	// beforefirst ) Moves the cursor to just before the first row
+			if(md_column_count != 0)
+			{
+				pstmt=conn.prepareStatement(SQL_search);
+				rs=pstmt.executeQuery();
 
+			}
 
+		%>
+			<script type="text/javascript">
+				m_menu =2;
+			</script>	
 		<!-- contents -->
 					
-		<%
-		    String driverName="com.mysql.jdbc.Driver";
-		    String url = "jdbc:mysql://localhost:3306/my_web";
-		    String id = "root";
-		    String pwd ="9305";
-		   	Connection conn =null;
-			PreparedStatement pstmt =null;
-			ResultSet rs = null;
-
-		    try{
-		        //[1] JDBC 드라이버 로드
-		        Class.forName(driverName);     
-			    
-				int md_column_count =0;
-				    // out.println("mysql jdbc Driver registered!!");
-				   
-			    //[2]데이타베이스 연결 
-				conn = DriverManager.getConnection(url,id,pwd);
-
-			    String SQL_column_count  = "select count(*) Num from board";
-			    String SQL_search  = "select * from board";
-			  //  int column_count;
-			  	
-			    pstmt = conn.prepareStatement(SQL_column_count);   
-			   	rs = pstmt.executeQuery();
-			   	rs.next();
-
-				md_column_count	=	rs.getInt("Num");
-			//	while(rs.next())
-			 //		out.println(rs.getString(1) + "<br>");
-				//rs.beforeFirst();
-			  	// beforefirst ) Moves the cursor to just before the first row
-				if(md_column_count != 0)
-				{
-					pstmt=conn.prepareStatement(SQL_search);
-					rs=pstmt.executeQuery();
-				}
-			
-		    
 		
-		%>
-
 
 
 		
@@ -75,9 +56,9 @@
 		    	%>
 					<tr>
 						<td><div class="text-center"> <%=rs.getString(1)%></div></td>
-						<td><div><%=rs.getString(2)%></div></td>
+						<td><div><a href="index_contents_board_view.jsp?num=<%=rs.getInt("NUM")%>"><%=rs.getString(2)%></a></div></td>
 						<td><div class="text-center"><%=rs.getString(3)%></div></td>
-						<td><div class="text-center"><%=rs.getString(4).substring(0, 10)%></div></td>
+						<td><div class="text-center"><%=rs.getString(7).substring(0, 10)%></div></td>
 				
 					</tr>
 		    	<%
@@ -85,28 +66,24 @@
 		    	%>
 
 		    </tbody>
-
-
-			<%
-				}catch(Exception e){
-		            e.printStackTrace();
-		        }finally{
-		            if(rs != null) rs.close();
-		            if(pstmt != null) pstmt.close();
-		            if(conn != null) conn.close();
-		        }
-			%>
 		</table>
+
+		
+
 
 		<!-- 글쓰기 버튼 -->
 		<div class="clearfix">
-				
+					
 				<div class="pull-right">
-					<a href="www.naver.com">
-						<button class="btn btn-primary" type="button">글쓰기</button>
+
+
+					<a href="index_contents_board_write.jsp">
+						<button class="btn btn-primary" type="button">Write</button>
 					</a>
 
-				</div>						
+				</div>
+
+									
 		</div>
 
 
@@ -125,10 +102,10 @@
 
 
 
-				
+			
+	<%@ include file="JDBC_footer.jsp"%>
 
-
-
-		<%@ include file="index_footer.jsp"%>
+	
+	<%@ include file="index_footer.jsp"%>
 		
-	</body>
+	

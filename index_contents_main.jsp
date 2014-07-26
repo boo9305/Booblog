@@ -5,14 +5,14 @@
 
 
 		<%@ include file="index_header.jsp"%>
-
+			<script type="text/javascript">
+				m_menu =1;
+			</script>	
 	
 			<h2>Home</h2>
 			<p>설명</p>
 
-		
-
-
+	
 		<%@ include file="index_footer.jsp"%>
 		
-	</body>
+	

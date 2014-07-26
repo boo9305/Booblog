@@ -6,7 +6,9 @@
 
 		<%@ include file="index_header.jsp"%>
 
-	
+			<script type="text/javascript">
+				m_menu =3;
+			</script>	
 
 
 			<script type="text/javascript">
@@ -55,4 +57,4 @@
 
 		<%@ include file="index_footer.jsp"%>
 		
-	</body>
+	
