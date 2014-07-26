@@ -2,8 +2,7 @@ Booblog
 =======
 
 
-update 1.03 
+update version 1.03 
 
-- (no) jsp include
-- board view 
-- bootstrap, jquery
+study jsp , jquery , bootstrap , html , css
+
