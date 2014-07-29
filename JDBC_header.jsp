@@ -1,7 +1,6 @@
 
 	<%
-		response.setContentType("text/html; charset=euckr");
-		request.setCharacterEncoding("euckr");
+		
 	    String driverName="com.mysql.jdbc.Driver";
 	    String url = "jdbc:mysql://localhost:3306/my_web?useUnicode=true&characterEncoding=euckr";
 	    String id = "root";

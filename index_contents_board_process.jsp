@@ -1,20 +1,28 @@
 
 <%@ include file="index_header.jsp"%>
+
+<%
+	String mode =null;
+	String num =null;
+%>
+
+<%@ include file="JDBC_header.jsp"%>
+
 		<script type="text/javascript">
 				m_menu =2;
 		</script>
 <%
-	String mode = request.getParameter("mode");
+	num = request.getParameter("num");
+	mode = request.getParameter("mode");
 	String subject = request.getParameter("subject");
 	// String writer = request.getParameter("writer");
 	String contents = request.getParameter("contents");
-    String num = request.getParameter("num");
+ 
     String ip = request.getRemoteAddr();	
 
-   
+   	
 %>
 
-<%@ include file="JDBC_header.jsp"%>
 
 <%
 
@@ -30,15 +38,17 @@
 			pstmt.setString(4, ip);
 			pstmt.executeUpdate();
 
-			response.sendRedirect("index_contents_board.jsp");
-		} else if ("R".equals(mode)) {
+			//response.sendRedirect("index_contents_board.jsp");
+		} 
+		if ("R".equals(mode)) {
 
 			pstmt = conn.prepareStatement(
 					"DELETE FROM BOO_BOARD WHERE NUM= ? ");
 			pstmt.setString(1, num);
 			pstmt.executeUpdate();
-			response.sendRedirect("index_contents_board.jsp");
-		}else if ("M".equals(mode)){
+			//response.sendRedirect("index_contents_board.jsp");
+		}
+		if ("M".equals(mode)){
 			
 			pstmt = conn.prepareStatement(
 					"UPDATE BOO_BOARD SET SUBJECT= ?, CONTENTS= ?, IP= ? , MOD_DATE = NOW() "+"WHERE NUM = ? ");
@@ -48,9 +58,7 @@
 			pstmt.setString(4, num);
 
 			pstmt.executeUpdate();
-			response.sendRedirect("index_contents_board_view.jsp?num="+num);
-		}else{
-			out.println("error");
+			//response.sendRedirect("index_contents_board_view.jsp?num="+num);
 		}
 
 
@@ -58,5 +66,17 @@
 
 
 
-<%@ include file="JDBC_footer.jsp"%>		
+<%@ include file="JDBC_footer.jsp"%>	
+
+
+<%
+
+	if ("W".equals(mode)) 
+		response.sendRedirect("index_contents_board.jsp");
+	if ("R".equals(mode)) 
+		response.sendRedirect("index_contents_board.jsp");
+	if ("M".equals(mode))
+		response.sendRedirect("index_contents_board_view.jsp?num="+num);
+%>
+
 <%@ include file="index_footer.jsp"%>

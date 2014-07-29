@@ -1,5 +1,5 @@
 
-	 <script src="edit/ckeditor_standerd/ckeditor.js"></script>
+	 <script src="edit/ckeditor_full/ckeditor.js"></script>
 
 	<%@ include file="index_header.jsp"%>
 	<%@ include file="JDBC_header.jsp"%>
@@ -40,7 +40,14 @@
 		<label for="Contentsinput"><b>Contents</b></label>
        <textarea id ="Contentsinput" name="contents" style="width:100%;height:200px;"></textarea>
 		<script type="text/javascript">
-			 CKEDITOR.replace( 'contents' ,{skin:'moono'});
+			 CKEDITOR.replace(
+			  	'contents',
+			  	{
+			  		filebrowserImageUploadUrl : "upload/upload.jsp",
+			  	}
+				
+           
+			 	);
         </script>
 
 		<!-- </div> -->
